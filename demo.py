@@ -8,7 +8,7 @@ import secrets
 
 def main():
     parser=argparse.ArgumentParser()
-    parser.add_argument('--controller',choices=['manual','scripted','ppo','options','free','map','roles'],default='scripted')
+    parser.add_argument('--controller',choices=['manual','scripted','ppo','options','free','map','roles','plate'],default='scripted')
     parser.add_argument('--checkpoint'); parser.add_argument('--seed',type=int)
     parser.add_argument('--replay')
     parser.add_argument('--campaign',action='store_true',help='Play the vault followed by the relay chamber')
@@ -53,6 +53,9 @@ def main():
         from free_roles import Policy, setup
         path=Path(args.checkpoint or 'runs/free_roles/seed7.json')
         free_policy=Policy(json.loads(path.read_text())['genome'])
+    if args.controller=='plate':
+        from plate_signal import PlateRoom, plate_actions, load_tables
+        plate_tables = load_tables()
     if args.controller=='options':
         import json
         from pathlib import Path
@@ -68,6 +71,9 @@ def main():
         torch.manual_seed(round_seed)
         policies,data=load(args.checkpoint); communication=data['config']['communication']
     def start_round(seed):
+        if args.controller=='plate':
+            room = PlateRoom()
+            return room, room.reset(seed)[0]
         nonlocal role_hidden, role_generator
         if args.relay:
             room=RelayRoom(seed)
@@ -117,6 +123,8 @@ def main():
                     move_logits, message_logits, _, updated = policy_forward(role_model, [obs], role_hidden[None])
                     actions = sample_actions(move_logits[0], message_logits[0], role_generator)
                     role_hidden = updated[0].detach()
+            elif args.controller=='plate':
+                actions = plate_actions(plate_tables, obs, walls)
             elif args.controller=='map':
                 actions=moves(map_policy,obs)
             elif args.controller=='free':
@@ -166,7 +174,7 @@ def main():
                 next_room()
             elif not env.done and accumulator>=1/speed:
                 advance(); accumulator=0
-        mode = {'manual':'Manual','scripted':'Scripted','ppo':'Trained PPO','options':'Learned cooperation','free':'Learned moves','map':'Full-map PPO','roles':'Role coordination' if communication else 'Role coordination silent'}[args.controller]
+        mode = {'manual':'Manual','scripted':'Scripted','ppo':'Trained PPO','options':'Learned cooperation','free':'Learned moves','map':'Full-map PPO','plate':'Plate signal demo','roles':'Role coordination' if communication else 'Role coordination silent'}[args.controller]
         view.draw(screen, env, mode, round_seed, speed, paused, selected)
         pygame.display.flip(); frames+=1
         if args.screenshot and frames==1: pygame.image.save(screen,args.screenshot)

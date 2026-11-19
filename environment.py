@@ -86,7 +86,7 @@ class EscapeRoom:
         c=self.config
         bonus=0
         terminated=False
-        holders = (0,1) if c.get('interchangeable', False) else (0,)
+        holders = (0,1) if c.get('interchangeable', False) else (c.get('plate_holder',0),)
         for holder in holders:
             partner = 1-holder
             if self.unlocked or self.pos[holder]!=tuple(c['plate']) or pairs[partner][0]!=5:

@@ -6,6 +6,10 @@ Can two agents learn to solve a puzzle together, and does exchanging a private c
 
 ![The Sunken Vault game window](preview.png)
 
+## Presentation demo
+
+Open **Watch Plate Signal.cmd** or run `python demo.py --controller plate --seed 42`. B steps onto the pressure plate and privately learns which switch is correct. B then sends a symbol, and A uses the learned symbol mapping to select the switch. Both escape through the hatch. The plate trigger and waiting behavior are built into this variant. The 179/200 result above belongs to the original A-to-B experiment.
+
 ## Run your first demo
 
 On Windows, install Python 3.12, open PowerShell, and run:

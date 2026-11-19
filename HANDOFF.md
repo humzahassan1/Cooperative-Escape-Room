@@ -122,3 +122,7 @@ The two `train` commands repeat the finished seed 7 runs. Their checkpoints and 
 - **Five-minute presentation and demo:** still to prepare and rehearse. Choose one presenter. Show what information each agent receives, demonstrate one labeled learned controller, and explain a controlled comparison. Both partners should be ready for questions.
 - **Coordination:** confirm presentation and submission dates, the final roster, and any approval needed for a team smaller than the assigned four. No dates or individual assignments are recorded here. A practical split is for one partner to own training and evaluation logs and the other to independently reproduce a result and draft the methods and figures. Review conclusions together.
 
+
+## Presentation variant: clue revealed on contact
+
+Use **Watch Plate Signal.cmd** to show B discovering the clue on the plate and signaling A. Before contact the private clue fields are empty for both agents. After contact only B sees it. The variant reuses the seed 7 symbol encoder and receiver decision table with reversed character assignments. The demo supplies the timing and navigation; its fixed-room behavior has been checked for both clues. Cite the original goal-controller experiment for the 179/200 figure.

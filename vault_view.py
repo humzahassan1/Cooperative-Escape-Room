@@ -110,7 +110,10 @@ class VaultView:
                 write('ESCAPED' if env.escaped[i] else f'Transmitted symbol   {env.messages[i]}',723,top+31,muted)
         pygame.draw.line(screen,(58,85,87),(648,308),(1034,308))
         reader='AB'[getattr(env,'clue_holder',0)]
-        write(env.event if relay else f'Private clue     {reader} sees switch {env.clue+1}',650,329)
+        clue_line = f'Private clue     {reader} sees switch {env.clue+1}'
+        if mode=='Plate signal demo' and not env.has_clue:
+            clue_line = 'Private clue     hidden until B arrives'
+        write(env.event if relay else clue_line,650,329)
         write(f'Channel          {"enabled" if env.communication else "disabled"}',650,357)
         if relay:
             fuse_state='installed' if env.unlocked else ('at supply' if env.carrier is None else 'with ' + 'AB'[env.carrier])
@@ -128,6 +131,7 @@ class VaultView:
         if env.done and not paused:
             write('R for next room' if mode=='Manual' else 'Next dive starts automatically',650,538,muted)
         rule='Hold the plate while the other agent activates the matching switch. Both must reach the hatch.'
+        if mode=='Plate signal demo': rule='B reads the clue on the plate and signals A. A presses the matching switch.'
         if relay: rule='Collect fuse [E]. Meet on opposite sides of the grille. Pass [F], install [E], then escape.'
         write(rule,26,582,ink)
         write('R  Next dive     P  Pause     N  Step     + / -  Speed     Esc  Quit',26,611,muted)
