@@ -32,7 +32,8 @@ class VaultView:
         pygame.draw.rect(screen,(14,34,40),(0,0,1080,96))
         pygame.draw.line(screen,(87,104,87),(0,95),(1080,95))
         write('COOPERATIVE ESCAPE ROOM',26,11,brass)
-        write('The Sunken Vault',24,29,ink,self.name)
+        relay=hasattr(env,'grille')
+        write('The Relay Chamber' if relay else 'The Sunken Vault',24,29,ink,self.name)
         write(f'ROOM  {seed}',650,24,muted)
         write(mode.upper(),650,47,self.colors[0],self.medium)
         ox,oy=26,117
@@ -50,11 +51,26 @@ class VaultView:
         cfg=env.config
         def center(p):
             return ox+p[0]*64+32,oy+p[1]*64+32
-        px,py=center(cfg['plate'])
-        active=tuple(cfg['plate']) in env.pos
-        if active: pygame.draw.circle(screen,(170,132,221),(px,py),28,3)
-        sprite('plate',px,py)
-        for number,p in enumerate(cfg['switches'],1):
+        if relay:
+            x,y=center(env.socket)
+            sprite('plate',x,y)
+            write('SOCKET',x-25,y+16,ink)
+            gx,gy=center(env.grille)
+            if not env.unlocked:
+                pygame.draw.rect(screen,(13,27,33),(gx-31,gy-12,62,24))
+                for offset in range(-24,30,10):
+                    pygame.draw.line(screen,brass,(gx+offset,gy-11),(gx+offset,gy+11),3)
+            if env.carrier is None and not env.unlocked:
+                fx,fy=center(env.fuse)
+                pygame.draw.rect(screen,(160,237,211),(fx-14,fy-7,28,14),border_radius=3)
+                for offset in (-18,12):
+                    pygame.draw.rect(screen,brass,(fx+offset,fy-10,6,20))
+        else:
+            px,py=center(cfg['plate'])
+            active=tuple(cfg['plate']) in env.pos
+            if active: pygame.draw.circle(screen,(170,132,221),(px,py),28,3)
+            sprite('plate',px,py)
+        for number,p in enumerate(cfg.get('switches',()),1):
             x,y=center(p); sprite('switch',x,y)
             pygame.draw.rect(screen,(20,29,33),(x+13,y-28,17,18),border_radius=3)
             write(number,x+17,y-28,brass)
@@ -75,6 +91,8 @@ class VaultView:
             if mode=='Manual' and selected==i:
                 pygame.draw.ellipse(screen,self.colors[i],(x-26,y+12,52,17),2)
             sprite(kind,x,y+round(1.5*math.sin(now/350+i)))
+            if relay and env.carrier==i:
+                pygame.draw.rect(screen,(160,237,211),(x+13,y-22,18,8),border_radius=2)
         pygame.draw.rect(screen,(18,39,45),(628,115,428,450),border_radius=8)
         write('CREW TELEMETRY',648,134,brass)
         for i,(kind,caption) in enumerate([('diver','A   Brass Diver'),('crab','B   Crab Scout')]):
@@ -84,9 +102,13 @@ class VaultView:
             write('ESCAPED' if env.escaped[i] else f'Transmitted symbol   {env.messages[i]}',723,top+31,muted)
         pygame.draw.line(screen,(58,85,87),(648,308),(1034,308))
         reader='AB'[getattr(env,'clue_holder',0)]
-        write(f'Private clue     {reader} sees switch {env.clue+1}',650,329)
+        write(env.event if relay else f'Private clue     {reader} sees switch {env.clue+1}',650,329)
         write(f'Channel          {"enabled" if env.communication else "disabled"}',650,357)
-        write(f'Pressure plate   {"occupied" if active else "empty"}',650,385)
+        if relay:
+            fuse_state='installed' if env.unlocked else ('at supply' if env.carrier is None else 'with ' + 'AB'[env.carrier])
+            write(f'Relay fuse       {fuse_state}',650,385)
+        else:
+            write(f'Pressure plate   {"occupied" if active else "empty"}',650,385)
         write(f'Exit hatch       {"OPEN" if env.unlocked else "sealed"}',650,413)
         write(f'Step {env.steps:03d} / {cfg["max_steps"]}     {speed} steps/sec',650,452,muted)
         pygame.draw.rect(screen,(39,63,68),(650,478,382,5))
@@ -96,6 +118,7 @@ class VaultView:
         if env.done and not paused:
             write('R for next room' if mode=='Manual' else 'Next dive starts automatically',650,538,muted)
         rule='Hold the plate while the other agent activates the matching switch. Both must reach the hatch.'
+        if relay: rule='Collect fuse [E]. Meet on opposite sides of the grille. Pass [F], install [E], then escape.'
         write(rule,26,582,ink)
         write('R  Next dive     P  Pause     N  Step     + / -  Speed     Esc  Quit',26,611,muted)
         if mode=='Manual':

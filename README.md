@@ -20,6 +20,12 @@ python -m venv .venv
 
 The agents start moving automatically. The launchers use the project virtual environment when available. CPU is sufficient. Checkpoints are included under [runs](runs/), and the environment generates its own data. On macOS or Linux, create a Python 3.12 virtual environment, install the same requirements, then run `python demo.py --controller options --checkpoint runs/options/seed7_comm.json` in that environment.
 
+## Stage two: The Relay Chamber
+
+Open **Watch Two Stages.cmd** to watch the scripted crew escape the vault and enter the relay chamber. **Play Relay Chamber.cmd** starts manual play directly in stage two. Use **E** to pick up the fuse, bring both agents to the opposite sides of the central grille, press **F** as the carrier to pass it, then use **E** on the socket. Installing the fuse opens the grille and hatch so both agents can exit. Either character can start on the supply side. For manual play across both stages, use `python demo.py --controller manual --campaign` and press R after clearing stage one.
+
+For training integration, `RelayRoom` in `relay_room.py` provides the joint reset/step API and seven movement choices (pass = 6). Its 450-float observation encodes walls, loose fuse, socket, grille, exit, both agents, inventory, power, escapes, time and message. The channel has three symbols. Stage two currently has a scripted reference; existing checkpoints were trained with different action or observation semantics. Rewards are shared: -0.01 per step, +1 for installing power, +5 for both escaping. Passing gives no repeatable reward.
+
 ## Choose a demo
 
 | Windows launcher | What you will see |
@@ -59,4 +65,5 @@ python report.py
 The original trainer rounds up to 501,760 joint steps. The report script recreates the original pilot figure and results from its saved runs. The free-role and full-map training scripts write to fixed paths under `runs/`; use a fresh clone for reruns if you want to retain the published checkpoints locally.
 
 [Environment and rules](environment.py) · [Pygame viewer](demo.py) · [Pinned dependencies](requirements.txt) · [Original tested environment](tested_environment.json) · [PPO attribution](ATTRIBUTION.md)
+
 

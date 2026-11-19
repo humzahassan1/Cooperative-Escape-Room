@@ -8,6 +8,8 @@ MOVES = ((0,-1),(0,1),(-1,0),(1,0),(0,0),(0,0))
 OBS_VERSION = 1
 
 class EscapeRoom:
+    moves = MOVES
+
     def __init__(self, communication=True, config=None):
         self.config = config or json.loads(Path(__file__).with_name('room.json').read_text())
         self.communication = communication
@@ -46,14 +48,14 @@ class EscapeRoom:
         if self.done:
             raise RuntimeError('reset required after episode end')
         pairs = [tuple(map(int,actions[k])) for k in IDS]
-        if any(a not in range(6) or m not in range(3) for a,m in pairs):
-            raise ValueError('actions must be (movement 0..5, message 0..2)')
+        if any(a not in range(len(self.moves)) or m not in range(3) for a,m in pairs):
+            raise ValueError(f'expected action 0..{len(self.moves)-1} and message 0..2')
         c = self.config
         old = self.pos.copy()
         proposed = old.copy()
         for i,(a,m) in enumerate(pairs):
             if self.escaped[i]: continue
-            dx,dy = MOVES[a]
+            dx,dy = self.moves[a]
             x,y = old[i][0]+dx,old[i][1]+dy
             if 0<x<c['width']-1 and 0<y<c['height']-1 and [x,y] not in c.get('walls', ()) and (self.unlocked or (x,y)!=tuple(c['exit'])):
                 proposed[i]=(x,y)
@@ -65,20 +67,8 @@ class EscapeRoom:
         self.steps+=1
         reward=-.01
         terminated=False
-        holders = (0,1) if c.get('interchangeable', False) else (0,)
-        for holder in holders:
-            partner = 1-holder
-            if self.unlocked or self.pos[holder]!=tuple(c['plate']) or pairs[partner][0]!=5:
-                continue
-            for j,p in enumerate(c['switches']):
-                if self.pos[partner]==tuple(p):
-                    if j==self.clue:
-                        self.unlocked=True
-                        reward+=1
-                    else:
-                        terminated=True
-                        self.outcome='wrong switch'
-                        reward-=1
+        bonus,terminated=self.interact(pairs)
+        reward+=bonus
         if self.unlocked:
             self.escaped=[e or p==tuple(c['exit']) for e,p in zip(self.escaped,self.pos)]
             if all(self.escaped):
@@ -89,6 +79,26 @@ class EscapeRoom:
         if truncated: self.outcome='timeout'
         self.done=terminated or truncated
         return self.observations(), {k:reward for k in IDS}, terminated, truncated, self.info()
+
+    def interact(self,pairs):
+        c=self.config
+        bonus=0
+        terminated=False
+        holders = (0,1) if c.get('interchangeable', False) else (0,)
+        for holder in holders:
+            partner = 1-holder
+            if self.unlocked or self.pos[holder]!=tuple(c['plate']) or pairs[partner][0]!=5:
+                continue
+            for j,p in enumerate(c['switches']):
+                if self.pos[partner]==tuple(p):
+                    if j==self.clue:
+                        self.unlocked=True
+                        bonus+=1
+                    else:
+                        terminated=True
+                        self.outcome='wrong switch'
+                        bonus-=1
+        return bonus,terminated
 
 def scripted(obs, walls=()):
     """Decentralized reference: B reads only its received message, never A's clue."""

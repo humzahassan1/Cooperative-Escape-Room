@@ -10,8 +10,13 @@ def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--controller',choices=['manual','scripted','ppo','options','free','map'],default='scripted')
     parser.add_argument('--checkpoint'); parser.add_argument('--seed',type=int)
+    parser.add_argument('--campaign',action='store_true',help='Play the vault followed by the relay chamber')
+    parser.add_argument('--relay',action='store_true',help='Start directly in the relay chamber')
     parser.add_argument('--screenshot'); parser.add_argument('--frames',type=int,default=0)
     args=parser.parse_args()
+    if (args.campaign or args.relay) and args.controller not in ('scripted','manual'):
+        parser.error('Relay uses seven actions; use manual or scripted playback.')
+    from relay_room import RelayRoom
     round_seed = args.seed if args.seed is not None else secrets.randbits(32)
     policies=None; communication=True
     if args.controller=='map':
@@ -38,6 +43,9 @@ def main():
         torch.manual_seed(round_seed)
         policies,data=load(args.checkpoint); communication=data['config']['communication']
     def start_round(seed):
+        if args.relay:
+            room=RelayRoom(seed)
+            return room,room.observations()
         if args.controller=='map':
             room = room_for(seed)
             return room, room.reset(seed)[0]
@@ -56,7 +64,9 @@ def main():
         if env.done:return
         if actions is None:
             walls=env.config.get('walls', ())
-            if args.controller=='map':
+            if isinstance(env,RelayRoom):
+                actions=env.reference_actions()
+            elif args.controller=='map':
                 actions=moves(map_policy,obs)
             elif args.controller=='free':
                 actions=free_policy.act(obs)
@@ -67,6 +77,16 @@ def main():
             else:
                 actions=choose(policies,obs)
         obs,_,_,_,_=env.step(actions)
+    def next_room():
+        nonlocal env,obs,round_seed,accumulator,pending
+        if args.campaign and not isinstance(env,RelayRoom) and env.outcome=='success':
+            env=RelayRoom(round_seed)
+            obs=env.observations()
+        else:
+            round_seed+=1
+            env,obs=start_round(round_seed)
+        accumulator=0
+        pending=[0,0]
     while running:
         dt=clock.tick(60)/1000; accumulator+=dt
         for event in pygame.event.get():
@@ -77,8 +97,7 @@ def main():
                     key=ord(event.unicode.lower())
                 if key==pygame.K_ESCAPE: running=False
                 elif key==pygame.K_r:
-                    round_seed += 1
-                    env,obs=start_round(round_seed); accumulator=0; pending=[0,0]
+                    next_room()
                 elif key==pygame.K_TAB:selected=1-selected
                 elif key==pygame.K_p: paused=not paused
                 elif key in [pygame.K_EQUALS,pygame.K_PLUS,pygame.K_KP_PLUS]:speed=min(32,speed*2)
@@ -87,13 +106,13 @@ def main():
                 elif key in [pygame.K_0,pygame.K_1,pygame.K_2]:pending[selected]=key-pygame.K_0
                 elif args.controller=='manual' and not paused:
                     mapping={pygame.K_UP:0,pygame.K_DOWN:1,pygame.K_LEFT:2,pygame.K_RIGHT:3,pygame.K_SPACE:4,pygame.K_e:5}
+                    if isinstance(env,RelayRoom): mapping[pygame.K_f]=6
                     if key in mapping:
                         actions={k:(4,pending[i]) for i,k in enumerate(IDS)}
                         actions[IDS[selected]]=(mapping[key],pending[selected]); advance(actions)
         if args.controller!='manual' and not paused:
             if env.done and accumulator>=2:
-                round_seed += 1
-                env,obs=start_round(round_seed); accumulator=0
+                next_room()
             elif not env.done and accumulator>=1/speed:
                 advance(); accumulator=0
         mode = {'manual':'Manual','scripted':'Scripted','ppo':'Trained PPO','options':'Learned cooperation','free':'Learned moves','map':'Full-map PPO'}[args.controller]
