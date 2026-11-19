@@ -1,0 +1,22 @@
+{
+  "initial": {
+    "pairs": 100,
+    "seed": 30000,
+    "correct_switch_both_clues": 0,
+    "escape_both_clues": 0,
+    "escapes": [
+      0,
+      0
+    ]
+  },
+  "trained": {
+    "pairs": 100,
+    "seed": 30000,
+    "correct_switch_both_clues": 0,
+    "escape_both_clues": 0,
+    "escapes": [
+      2,
+      12
+    ]
+  }
+}

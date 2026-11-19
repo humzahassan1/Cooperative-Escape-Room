@@ -1,0 +1,10 @@
+[
+  {
+    "iteration": 1,
+    "steps": 2048,
+    "loss": -0.019305882160551846,
+    "elapsed_seconds": 0.6824647000757977,
+    "success_rate": 0.025,
+    "successful_episode_length": 78.0
+  }
+]

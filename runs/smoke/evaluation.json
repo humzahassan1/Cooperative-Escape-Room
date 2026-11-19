@@ -1,0 +1,1411 @@
+{
+  "controller": "ppo",
+  "communication": true,
+  "mode": "normal",
+  "episodes": 200,
+  "success_rate": 0.0,
+  "successful_episode_length": null,
+  "records": [
+    {
+      "seed": 10000,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10001,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10002,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10003,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10004,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10005,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10006,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10007,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10008,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10009,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10010,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10011,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10012,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10013,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10014,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10015,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10016,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10017,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10018,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10019,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10020,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10021,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10022,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10023,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10024,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10025,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10026,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10027,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10028,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10029,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10030,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10031,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10032,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10033,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10034,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10035,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10036,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10037,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10038,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10039,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10040,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10041,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10042,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10043,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10044,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10045,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10046,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10047,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10048,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10049,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10050,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10051,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10052,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10053,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10054,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10055,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10056,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10057,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10058,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10059,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10060,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": true
+    },
+    {
+      "seed": 10061,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10062,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10063,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10064,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10065,
+      "clue": 1,
+      "outcome": "wrong switch",
+      "steps": 28,
+      "unlocked": false
+    },
+    {
+      "seed": 10066,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10067,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10068,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10069,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10070,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": true
+    },
+    {
+      "seed": 10071,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10072,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10073,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10074,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10075,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10076,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10077,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10078,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10079,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10080,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10081,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10082,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10083,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10084,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10085,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10086,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10087,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10088,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10089,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10090,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10091,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10092,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10093,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10094,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10095,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10096,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10097,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10098,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10099,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10100,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10101,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10102,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10103,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10104,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10105,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10106,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10107,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10108,
+      "clue": 0,
+      "outcome": "wrong switch",
+      "steps": 98,
+      "unlocked": false
+    },
+    {
+      "seed": 10109,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10110,
+      "clue": 0,
+      "outcome": "wrong switch",
+      "steps": 49,
+      "unlocked": false
+    },
+    {
+      "seed": 10111,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10112,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10113,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10114,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10115,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": true
+    },
+    {
+      "seed": 10116,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10117,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10118,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10119,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10120,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10121,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10122,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10123,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10124,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10125,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10126,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10127,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10128,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10129,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10130,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10131,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10132,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10133,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10134,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10135,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10136,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10137,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10138,
+      "clue": 0,
+      "outcome": "wrong switch",
+      "steps": 7,
+      "unlocked": false
+    },
+    {
+      "seed": 10139,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10140,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10141,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10142,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10143,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10144,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10145,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10146,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10147,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10148,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10149,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10150,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10151,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": true
+    },
+    {
+      "seed": 10152,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10153,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10154,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10155,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10156,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10157,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10158,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10159,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10160,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10161,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10162,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10163,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10164,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10165,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10166,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10167,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10168,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": true
+    },
+    {
+      "seed": 10169,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10170,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10171,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10172,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10173,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10174,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10175,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10176,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10177,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10178,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10179,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10180,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10181,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10182,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10183,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10184,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10185,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10186,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10187,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10188,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10189,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10190,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10191,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10192,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10193,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10194,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10195,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10196,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10197,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10198,
+      "clue": 0,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    },
+    {
+      "seed": 10199,
+      "clue": 1,
+      "outcome": "timeout",
+      "steps": 100,
+      "unlocked": false
+    }
+  ],
+  "training_seconds": 36.25102630001493
+}

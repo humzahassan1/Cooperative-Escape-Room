@@ -1,0 +1,98 @@
+[
+  {
+    "seed": 7,
+    "channel": true,
+    "tests": {
+      "normal": {
+        "escapes": 179,
+        "episodes": 200,
+        "both_clues": 85
+      },
+      "swapped": {
+        "escapes": 0,
+        "episodes": 200,
+        "both_clues": 0
+      },
+      "silenced": {
+        "escapes": 0,
+        "episodes": 200,
+        "both_clues": 0
+      }
+    }
+  },
+  {
+    "seed": 7,
+    "channel": false,
+    "tests": {
+      "silenced": {
+        "escapes": 93,
+        "episodes": 200,
+        "both_clues": 0
+      }
+    }
+  },
+  {
+    "seed": 8,
+    "channel": true,
+    "tests": {
+      "normal": {
+        "escapes": 179,
+        "episodes": 200,
+        "both_clues": 85
+      },
+      "swapped": {
+        "escapes": 0,
+        "episodes": 200,
+        "both_clues": 0
+      },
+      "silenced": {
+        "escapes": 93,
+        "episodes": 200,
+        "both_clues": 0
+      }
+    }
+  },
+  {
+    "seed": 8,
+    "channel": false,
+    "tests": {
+      "silenced": {
+        "escapes": 1,
+        "episodes": 200,
+        "both_clues": 0
+      }
+    }
+  },
+  {
+    "seed": 9,
+    "channel": true,
+    "tests": {
+      "normal": {
+        "escapes": 179,
+        "episodes": 200,
+        "both_clues": 85
+      },
+      "swapped": {
+        "escapes": 0,
+        "episodes": 200,
+        "both_clues": 0
+      },
+      "silenced": {
+        "escapes": 93,
+        "episodes": 200,
+        "both_clues": 0
+      }
+    }
+  },
+  {
+    "seed": 9,
+    "channel": false,
+    "tests": {
+      "silenced": {
+        "escapes": 93,
+        "episodes": 200,
+        "both_clues": 0
+      }
+    }
+  }
+]

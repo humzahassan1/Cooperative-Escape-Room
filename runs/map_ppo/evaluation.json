@@ -1,0 +1,9 @@
+{
+  "train_seed": 7,
+  "train_layouts": 128,
+  "train_steps": 65536,
+  "test_layouts": 25,
+  "episodes": 100,
+  "unlocked": 3,
+  "escaped": 0
+}

@@ -1,0 +1,41 @@
+[
+  {
+    "seed": 7,
+    "generations": 178,
+    "fixed": 8,
+    "silenced": 6,
+    "plate_holders": {
+      "A": 4,
+      "B": 4
+    },
+    "new_layout_outcomes": {
+      "timeout": 100
+    }
+  },
+  {
+    "seed": 8,
+    "generations": 442,
+    "fixed": 8,
+    "silenced": 6,
+    "plate_holders": {
+      "B": 4,
+      "A": 4
+    },
+    "new_layout_outcomes": {
+      "timeout": 100
+    }
+  },
+  {
+    "seed": 9,
+    "generations": 407,
+    "fixed": 8,
+    "silenced": 6,
+    "plate_holders": {
+      "A": 4,
+      "B": 4
+    },
+    "new_layout_outcomes": {
+      "timeout": 100
+    }
+  }
+]

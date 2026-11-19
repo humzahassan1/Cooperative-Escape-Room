@@ -1,0 +1,49 @@
+{
+  "communication": true,
+  "total_steps": 2048,
+  "seed": 7,
+  "num_envs": 16,
+  "rollout": 128,
+  "epochs": 4,
+  "minibatches": 4,
+  "learning_rate": 0.0003,
+  "gamma": 0.99,
+  "gae_lambda": 0.95,
+  "clip": 0.2,
+  "entropy": 0.01,
+  "gradient_clip": 0.5,
+  "observation_version": 1,
+  "room": {
+    "width": 9,
+    "height": 7,
+    "starts": [
+      [
+        2,
+        3
+      ],
+      [
+        5,
+        3
+      ]
+    ],
+    "plate": [
+      2,
+      2
+    ],
+    "switches": [
+      [
+        5,
+        2
+      ],
+      [
+        5,
+        4
+      ]
+    ],
+    "exit": [
+      7,
+      3
+    ],
+    "max_steps": 100
+  }
+}

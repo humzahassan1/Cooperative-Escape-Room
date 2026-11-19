@@ -1,0 +1,394 @@
+[
+  {
+    "iteration": 1,
+    "steps": 2048,
+    "loss": 0.8970366809517145,
+    "elapsed_seconds": 0.9228116000303999,
+    "success_rate": 0.0,
+    "successful_episode_length": null
+  },
+  {
+    "iteration": 2,
+    "steps": 4096,
+    "loss": 0.96241076849401,
+    "elapsed_seconds": 9.43062929995358
+  },
+  {
+    "iteration": 3,
+    "steps": 6144,
+    "loss": 0.9309152904897928,
+    "elapsed_seconds": 10.260960999992676
+  },
+  {
+    "iteration": 4,
+    "steps": 8192,
+    "loss": 0.8815125580877066,
+    "elapsed_seconds": 11.149661600007676
+  },
+  {
+    "iteration": 5,
+    "steps": 10240,
+    "loss": 0.5343696586787701,
+    "elapsed_seconds": 12.034820100059733
+  },
+  {
+    "iteration": 6,
+    "steps": 12288,
+    "loss": 0.37281929329037666,
+    "elapsed_seconds": 12.942130099982023
+  },
+  {
+    "iteration": 7,
+    "steps": 14336,
+    "loss": 0.25383702479302883,
+    "elapsed_seconds": 13.799327800050378
+  },
+  {
+    "iteration": 8,
+    "steps": 16384,
+    "loss": 0.16843191720545292,
+    "elapsed_seconds": 14.679455099976622
+  },
+  {
+    "iteration": 9,
+    "steps": 18432,
+    "loss": 0.14616491133347154,
+    "elapsed_seconds": 15.592587499995716
+  },
+  {
+    "iteration": 10,
+    "steps": 20480,
+    "loss": 0.11824233480729163,
+    "elapsed_seconds": 16.458941300050355
+  },
+  {
+    "iteration": 11,
+    "steps": 22528,
+    "loss": 0.11127764685079455,
+    "elapsed_seconds": 17.32396179996431
+  },
+  {
+    "iteration": 12,
+    "steps": 24576,
+    "loss": 0.08433296158909798,
+    "elapsed_seconds": 18.191004000022076
+  },
+  {
+    "iteration": 13,
+    "steps": 26624,
+    "loss": 0.09404105460271239,
+    "elapsed_seconds": 19.28492320002988
+  },
+  {
+    "iteration": 14,
+    "steps": 28672,
+    "loss": 0.12609445280395448,
+    "elapsed_seconds": 20.161405500024557
+  },
+  {
+    "iteration": 15,
+    "steps": 30720,
+    "loss": 0.1094433304388076,
+    "elapsed_seconds": 21.034648400032893
+  },
+  {
+    "iteration": 16,
+    "steps": 32768,
+    "loss": 0.11150916339829564,
+    "elapsed_seconds": 22.009060899959877
+  },
+  {
+    "iteration": 17,
+    "steps": 34816,
+    "loss": 0.24138582567684352,
+    "elapsed_seconds": 22.95304389996454
+  },
+  {
+    "iteration": 18,
+    "steps": 36864,
+    "loss": 0.10932655516080558,
+    "elapsed_seconds": 23.974205199978314
+  },
+  {
+    "iteration": 19,
+    "steps": 38912,
+    "loss": 0.14013857604004443,
+    "elapsed_seconds": 25.00595699995756
+  },
+  {
+    "iteration": 20,
+    "steps": 40960,
+    "loss": 0.07411732187028974,
+    "elapsed_seconds": 25.924320699996315
+  },
+  {
+    "iteration": 21,
+    "steps": 43008,
+    "loss": 0.06894260854460299,
+    "elapsed_seconds": 26.792092000017874
+  },
+  {
+    "iteration": 22,
+    "steps": 45056,
+    "loss": 0.0793476264225319,
+    "elapsed_seconds": 27.66036510001868
+  },
+  {
+    "iteration": 23,
+    "steps": 47104,
+    "loss": 0.02133140282239765,
+    "elapsed_seconds": 28.47652210004162
+  },
+  {
+    "iteration": 24,
+    "steps": 49152,
+    "loss": 0.01165977562777698,
+    "elapsed_seconds": 29.333340500015765
+  },
+  {
+    "iteration": 25,
+    "steps": 51200,
+    "loss": 0.012303276103921235,
+    "elapsed_seconds": 30.152888800017536,
+    "success_rate": 0.025,
+    "successful_episode_length": 24.0
+  },
+  {
+    "iteration": 26,
+    "steps": 53248,
+    "loss": 0.013626582454890013,
+    "elapsed_seconds": 38.61195769999176
+  },
+  {
+    "iteration": 27,
+    "steps": 55296,
+    "loss": 0.003017383103724569,
+    "elapsed_seconds": 39.41812749998644
+  },
+  {
+    "iteration": 28,
+    "steps": 57344,
+    "loss": -0.0018088778015226126,
+    "elapsed_seconds": 40.20629640005063
+  },
+  {
+    "iteration": 29,
+    "steps": 59392,
+    "loss": 0.01422332547372207,
+    "elapsed_seconds": 41.020491100032814
+  },
+  {
+    "iteration": 30,
+    "steps": 61440,
+    "loss": 0.098729815101251,
+    "elapsed_seconds": 41.94713910005521
+  },
+  {
+    "iteration": 31,
+    "steps": 63488,
+    "loss": -0.0017406240804120898,
+    "elapsed_seconds": 42.824918500031345
+  },
+  {
+    "iteration": 32,
+    "steps": 65536,
+    "loss": -0.0006183385266922414,
+    "elapsed_seconds": 43.68992100004107
+  },
+  {
+    "iteration": 33,
+    "steps": 67584,
+    "loss": 0.041674409178085625,
+    "elapsed_seconds": 44.77129269996658
+  },
+  {
+    "iteration": 34,
+    "steps": 69632,
+    "loss": -0.0018919534632004797,
+    "elapsed_seconds": 45.7397564999992
+  },
+  {
+    "iteration": 35,
+    "steps": 71680,
+    "loss": -0.0021333786426112056,
+    "elapsed_seconds": 46.668108199955896
+  },
+  {
+    "iteration": 36,
+    "steps": 73728,
+    "loss": 0.09817141387611628,
+    "elapsed_seconds": 47.488947900012136
+  },
+  {
+    "iteration": 37,
+    "steps": 75776,
+    "loss": 0.0025403228937648237,
+    "elapsed_seconds": 48.33947270002682
+  },
+  {
+    "iteration": 38,
+    "steps": 77824,
+    "loss": 0.0623418326722458,
+    "elapsed_seconds": 49.236016700044274
+  },
+  {
+    "iteration": 39,
+    "steps": 79872,
+    "loss": 0.027754647191613913,
+    "elapsed_seconds": 50.05373020004481
+  },
+  {
+    "iteration": 40,
+    "steps": 81920,
+    "loss": 0.17369131045415998,
+    "elapsed_seconds": 50.925080799963325
+  },
+  {
+    "iteration": 41,
+    "steps": 83968,
+    "loss": 0.0251696968334727,
+    "elapsed_seconds": 51.81985460000578
+  },
+  {
+    "iteration": 42,
+    "steps": 86016,
+    "loss": 0.0015744673437438905,
+    "elapsed_seconds": 52.65197140001692
+  },
+  {
+    "iteration": 43,
+    "steps": 88064,
+    "loss": 0.002783524279948324,
+    "elapsed_seconds": 53.627911400049925
+  },
+  {
+    "iteration": 44,
+    "steps": 90112,
+    "loss": 0.049761522852350026,
+    "elapsed_seconds": 54.77655379998032
+  },
+  {
+    "iteration": 45,
+    "steps": 92160,
+    "loss": -0.0023490419262088835,
+    "elapsed_seconds": 55.70475030003581
+  },
+  {
+    "iteration": 46,
+    "steps": 94208,
+    "loss": 0.02493290469283238,
+    "elapsed_seconds": 56.512969300034456
+  },
+  {
+    "iteration": 47,
+    "steps": 96256,
+    "loss": 0.015635713119991124,
+    "elapsed_seconds": 57.35491810005624
+  },
+  {
+    "iteration": 48,
+    "steps": 98304,
+    "loss": 0.12594257667660713,
+    "elapsed_seconds": 58.173542400007136
+  },
+  {
+    "iteration": 49,
+    "steps": 100352,
+    "loss": 0.11261358845513314,
+    "elapsed_seconds": 59.03638070006855
+  },
+  {
+    "iteration": 50,
+    "steps": 102400,
+    "loss": -0.0010233469074591994,
+    "elapsed_seconds": 59.89901369996369,
+    "success_rate": 0.0,
+    "successful_episode_length": null
+  },
+  {
+    "iteration": 51,
+    "steps": 104448,
+    "loss": 0.10877818835433573,
+    "elapsed_seconds": 68.85395859996788
+  },
+  {
+    "iteration": 52,
+    "steps": 106496,
+    "loss": 0.1655778093263507,
+    "elapsed_seconds": 69.67630769999232
+  },
+  {
+    "iteration": 53,
+    "steps": 108544,
+    "loss": 0.001592317537870258,
+    "elapsed_seconds": 70.4870280000614
+  },
+  {
+    "iteration": 54,
+    "steps": 110592,
+    "loss": 0.13041203562170267,
+    "elapsed_seconds": 71.42405240004882
+  },
+  {
+    "iteration": 55,
+    "steps": 112640,
+    "loss": -0.001268167863599956,
+    "elapsed_seconds": 72.33931780001149
+  },
+  {
+    "iteration": 56,
+    "steps": 114688,
+    "loss": 0.15152773936279118,
+    "elapsed_seconds": 73.2227850999916
+  },
+  {
+    "iteration": 57,
+    "steps": 116736,
+    "loss": 0.06295702263014391,
+    "elapsed_seconds": 74.12661380006466
+  },
+  {
+    "iteration": 58,
+    "steps": 118784,
+    "loss": 0.10185113071929663,
+    "elapsed_seconds": 74.96550279995427
+  },
+  {
+    "iteration": 59,
+    "steps": 120832,
+    "loss": 0.0742422720650211,
+    "elapsed_seconds": 75.813599599991
+  },
+  {
+    "iteration": 60,
+    "steps": 122880,
+    "loss": 0.22728008101694286,
+    "elapsed_seconds": 76.67392570001539
+  },
+  {
+    "iteration": 61,
+    "steps": 124928,
+    "loss": 0.11256109864916652,
+    "elapsed_seconds": 77.5493593000574
+  },
+  {
+    "iteration": 62,
+    "steps": 126976,
+    "loss": 0.6104945167899132,
+    "elapsed_seconds": 78.43387820001226
+  },
+  {
+    "iteration": 63,
+    "steps": 129024,
+    "loss": 0.19964319420978427,
+    "elapsed_seconds": 79.3001497000223
+  },
+  {
+    "iteration": 64,
+    "steps": 131072,
+    "loss": 0.15370237728348002,
+    "elapsed_seconds": 80.08990869997069,
+    "success_rate": 0.05,
+    "successful_episode_length": 40.0
+  }
+]
