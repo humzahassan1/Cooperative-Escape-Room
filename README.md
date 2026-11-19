@@ -8,7 +8,7 @@ Can two agents learn to solve a puzzle together, and does exchanging a private c
 
 ## Presentation demo
 
-Open **Watch Plate Signal.cmd** or run `python demo.py --controller plate --seed 42`. B steps onto the pressure plate and privately learns which switch is correct. B then sends a symbol, and A uses the learned symbol mapping to select the switch. Both escape through the hatch. The plate trigger and waiting behavior are built into this variant. The 179/200 result above belongs to the original A-to-B experiment.
+Open **Watch Plate Signal.cmd** or run `python demo.py --controller plate --campaign`. Each launch draws a random vault. B steps onto the pressure plate and privately learns which switch is correct. B then sends a symbol, and A uses the learned symbol mapping to select the switch. After both escape, the same run continues into the relay chamber. Pass `--seed N` to repeat one layout. The plate trigger and waiting behavior are built into this variant. The 179/200 result above belongs to the original A-to-B experiment.
 
 ## Run your first demo
 
@@ -41,6 +41,7 @@ For training integration, `RelayRoom` in `relay_room.py` provides the joint rese
 | Watch Role Coordination.cmd | Shared GRU policy, no assigned jobs. Raw symbols stay unlabeled. After an unlock, the panel names who held the plate and who activated the switch. |
 | Watch Two Stages.cmd | Scripted crew clears the vault, then hands the fuse across the relay chamber. |
 | Play Relay Chamber.cmd | Manual play starts in the relay chamber. |
+| Watch Plate Signal.cmd | Random vault: B reads the clue on the plate and signals A, then both enter the relay chamber. |
 | Watch PPO Agents.cmd | Original independent PPO agents on the fixed room. |
 | Watch Staged PPO.cmd | Independent PPO after staged practice and extra training rewards. |
 | Play Manual.cmd | Control both agents yourself to inspect the rules. |
