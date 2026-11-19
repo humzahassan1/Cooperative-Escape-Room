@@ -6,8 +6,8 @@ import torch
 from environment import EscapeRoom, IDS
 from role_ppo import (
     BOARD, EXTRAS, HIDDEN, MESSAGE_COUNT, OBS_SIZE, RolePolicy, RoleRoom,
-    apply_done, case_generator, evaluation_cases, exchange_plate_and_switch,
-    mechanisms, play, reset_for_evaluation, run_cases,
+    advance_contact, apply_done, case_generator, evaluation_cases, exchange_plate_and_switch,
+    mechanisms, on_mechanism, play, reset_for_evaluation, run_cases,
     sample_exit_starts, sample_near_starts, sequence_forward, shaped_reward,
     stage_for, stream_rngs,
 )
@@ -118,6 +118,21 @@ class RoleRoomTests(unittest.TestCase):
         cases = evaluation_cases(range(21000, 21002))
         self.assertEqual(len(cases), 16)
         self.assertEqual(cases, evaluation_cases(range(21000, 21002)))
+
+    def test_messages_stay_ineligible_after_first_contact(self):
+        env = RoleRoom(config=fixed_config())
+        env.reset(1, clue=0, holder=0, swap_starts=False, stage='full')
+        away = [(1, 1), (7, 5)]
+        env.pos = list(away)
+        self.assertFalse(on_mechanism(env))
+        seen = advance_contact(False, on_mechanism(env))
+        self.assertFalse(seen)
+        env.pos = [tuple(env.config['plate']), (7, 5)]
+        seen = advance_contact(seen, on_mechanism(env))
+        self.assertTrue(seen)
+        env.pos = list(away)
+        self.assertFalse(on_mechanism(env))
+        self.assertTrue(advance_contact(seen, on_mechanism(env)))
 
     def test_plate_switch_exchange_keeps_the_rest(self):
         config = fixed_config()

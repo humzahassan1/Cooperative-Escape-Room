@@ -102,5 +102,6 @@
     "complement_rate": null,
     "predicts_job": false,
     "changes_partner": false
-  }
+  },
+  "counts_status": "computed before the first-contact fix; corrected counts pending."
 }

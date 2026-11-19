@@ -102,5 +102,6 @@
     "changes_partner": false,
     "complement_rate": null,
     "text": "This team was trained with silence delivered to both agents. A one-step symbol injection is outside the training distribution and is not evidence of a learned message convention."
-  }
+  },
+  "counts_status": "computed before the first-contact fix; corrected counts pending."
 }

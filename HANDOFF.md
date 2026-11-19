@@ -38,8 +38,9 @@ This is the work on `role-coordination`. The full-map pilot remains the baseline
 | Piece | What it does |
 |---|---|
 | [role_ppo.py](role_ppo.py) | The experiment. One shared policy. Each agent has its own 64-unit GRU. A convolutional encoder reads seven 9×7 layers: walls, plate, both switches, exit, self, and partner. Those features are combined with the private clue, the partner's previous message, the door, the escape flags, and the time remaining. |
-| [environment.py](environment.py) | The room can carry a message width. The old controllers still use three messages. This experiment uses silence plus four anonymous symbols. Nothing in the code names those symbols. |
-| [demo.py](demo.py) and [vault_view.py](vault_view.py) | Controller `roles`. The panel shows the raw symbol. After an unlock it names who held the plate and who activated the switch. A symbol gloss is labeled as a validation inference. |
+| [environment.py](environment.py) | The room can carry a message width and a movement table. The old controllers still use three messages and six movements. This experiment uses silence plus four anonymous symbols. Nothing in the code names those symbols. |
+| [demo.py](demo.py) and [vault_view.py](vault_view.py) | Controller `roles`. The panel shows the raw symbol. After an unlock it names who held the plate and who activated the switch. A symbol gloss is labeled as a validation inference. `--campaign` and `--relay` play the two-stage vault. |
+| [relay_room.py](relay_room.py), [Watch Two Stages.cmd](Watch%20Two%20Stages.cmd), [Play Relay Chamber.cmd](Play%20Relay%20Chamber.cmd) | After the vault, the scripted crew hands a fuse across a grille. Manual play can start in that chamber. Role checkpoints stay on the six-action vault. |
 | [Watch Role Coordination.cmd](Watch%20Role%20Coordination.cmd) | Windows launcher for the seed 7 messaging checkpoint. |
 | [test_role_ppo.py](test_role_ppo.py) | Regression tests, listed below. |
 
@@ -59,7 +60,7 @@ PPO settings match the repository baseline: 16 environments, 128-step rollouts, 
 
 The paired-role test keeps walls, exit, starts, clue, and clue recipient fixed, and exchanges the plate with the correct switch. Both variants have to be solvable by the scripted reference. The denominator is every pair, including failures. Fifty pairs were built from layout seeds beginning at 22000.
 
-The message diagnostic freezes a symbol reading on validation before it looks at held-out episodes. A symbol counts as an intent signal only if that reading predicts the sender's job beyond the clue and the positions, and changing the delivered symbol changes the partner's complementary job. The cutoffs live in `role_ppo.py` and were fixed before the held-out test: at least 30 labeled held-out rows, a 5 point accuracy margin, at least 20 job-contrast branches, and a complementary-change rate of at least 0.20. A success that becomes a failure counts as disruption, not a role change.
+The message diagnostic freezes a symbol reading on validation before it looks at held-out episodes. A symbol counts as an intent signal only if that reading predicts the sender's job beyond the clue and the positions, and changing the delivered symbol changes the partner's complementary job. The cutoffs live in `role_ppo.py` and were fixed before the held-out test: at least 30 labeled held-out rows, a 5 point accuracy margin, at least 20 job-contrast branches, and a complementary-change rate of at least 0.20. A success that becomes a failure counts as disruption, not a role change. A message chosen before the first step onto the plate or a switch can still be scored. After that contact, later messages stay ineligible even if both agents walk off.
 
 ### Tests that were run
 
@@ -97,6 +98,8 @@ The one plate-holder change is layout 22028, clue 1, recipient B, starts swapped
 On the messaging team the held-out diagnostic had 28 labeled sender-job rows, under the pre-registered minimum of 30. No frozen symbol reading was scored. Clue-from-symbol accuracy was 0.50125 on 1,600 predictions. Of 800 message interventions, the partner's next moves changed 13 times. Recorded role changes were 0, success disruptions were 0, and branches that contrasted two different job readings were 0. The saved conclusion is that there are too few labeled episodes to test intent. No intent signal is claimed. There is also no evidence here that the symbols carry the clue.
 
 On the silent team the room delivered only silence, so the diagnostic had no alternate symbol to substitute (0 eligible branches). Position predicted the sender's job on 22 of 34 labeled rows. That baseline does not use a message. The silent run is the no-channel comparison, not a test of a learned code.
+
+The diagnostic counts above were computed before the first-contact fix; corrected counts pending. The escape counts in the table are unchanged.
 
 ### What this branch does not yet have
 

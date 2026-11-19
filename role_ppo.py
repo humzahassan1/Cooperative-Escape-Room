@@ -781,6 +781,11 @@ def on_mechanism(env):
     return any(tuple(pos) in spots for pos in env.pos)
 
 
+def advance_contact(seen_contact, standing_on_mechanism):
+    """Once a plate or switch has been touched, later messages stay ineligible."""
+    return bool(seen_contact or standing_on_mechanism)
+
+
 def signal_features(config, positions, clue, sender):
     plate = tuple(config['plate'])
     correct = tuple(config['switches'][clue])
@@ -804,14 +809,16 @@ def collect_signals(model, cases, communication, snapshots=False, replacement_of
         hidden = torch.zeros(2, HIDDEN)
         pending = []
         branch = None
+        seen_contact = on_mechanism(env)
         while not env.done:
             before = [tuple(pos) for pos in env.pos]
-            contacted = on_mechanism(env)
+            eligible = not seen_contact
             move_logits, message_logits, _, updated = policy_forward(model, [env.observations()], hidden[None])
             actions = sample_actions(move_logits[0], message_logits[0], generator)
             env.step(actions)
             hidden = updated[0].detach()
-            if contacted or env.done:
+            seen_contact = advance_contact(seen_contact, on_mechanism(env))
+            if not eligible or env.done:
                 continue
             pending.append(dict(positions=before, messages=list(env.messages), clue=int(env.clue)))
             if snapshots and branch is None and replacement_of is not None:
