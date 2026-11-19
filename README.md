@@ -48,7 +48,7 @@ Run commands from the repository root with the project environment active. On Wi
 | Learned goals and messages | [Training, evaluation, and message swaps](LEARNED.md) |
 | Learned individual moves | [Training, role swaps, and transfer tests](FREE_ROLES.md) |
 | Full-map PPO | Run `python map_ppo.py` to train and evaluate. [Recorded evaluation](runs/map_ppo/evaluation.json) |
-| Role coordination | [Commands and per-seed results](runs/role_coordination/summary.json). Train with `python role_ppo.py experiment`. Replay with `python demo.py --controller roles --checkpoint runs/role_coordination/seed7_comm/checkpoint.pt --replay runs/role_coordination/replay.json`. |
+| Role coordination | [What was done, and the seed 7 numbers](HANDOFF.md). Finished checkpoints: `runs/role_coordination/seed7_comm` and `seed7_silent`. Watch with `python demo.py --controller roles --checkpoint runs/role_coordination/seed7_comm/checkpoint.pt`. |
 
 ```powershell
 python -m unittest -v

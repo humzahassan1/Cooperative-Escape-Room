@@ -5,7 +5,7 @@ We started with one question: can two learning agents use a private clue to esca
 ## First session together
 
 1. Follow the [README setup](README.md). Watch **Play Demo.cmd** once to learn the puzzle, then **Watch Learned Cooperation.cmd** to see the successful learned-message controller. The latter chooses destinations and uses a supplied pathfinder.
-2. Open **Watch Learned Moves.cmd** to see self-selected physical roles on the familiar map. Press **R** to try another clue or starting-side assignment. Open **Watch Full Map Agents.cmd** to see the version we want to improve.
+2. Open **Watch Learned Moves.cmd** to see self-selected physical roles on the familiar map. Press **R** to try another clue or starting-side assignment. Open **Watch Full Map Agents.cmd** for the full-map pilot. Open **Watch Role Coordination.cmd** for the shared GRU policy with no assigned jobs. The account of that run is in [Role coordination](#role-coordination-what-this-branch-contains).
 3. Run `python -m unittest -v`. Inspect the [goal-policy results](runs/options/results.json), [role and transfer summary](runs/free_roles/summary.json), and [full-map pilot](runs/map_ppo/evaluation.json). These files are the sources for the numbers below.
 
 ## How we got here
@@ -29,27 +29,88 @@ Randomized layouts are filtered for solvability by replaying the scripted refere
 
 **Generalization.** The 179/200 result belongs to the version with built-in navigation. Full-map PPO uses a different policy, action set, reward setup, and evaluation design. Comparing those percentages directly cannot isolate the effect of giving agents a map. A message intervention on a team with zero escapes also provides little information about what its messages mean.
 
-## Role coordination
+## Role coordination: what this branch contains
 
-The full-map pilot is the baseline this run starts from: shared weights, interchangeable mechanics, primitive actions, and **0/100** escapes. The **179/200** result is a different controller that chooses destinations and uses a supplied pathfinder. It is not the comparison for this run.
+This is the work on `role-coordination`. The full-map pilot remains the baseline: shared weights, interchangeable mechanics, primitive actions, and **0/100** escapes. The **179/200** figure belongs to the destination controller that uses a supplied pathfinder. The four-page paper was left for a later pass.
 
-`role_ppo.py` keeps one shared policy. Each agent has its own 64-unit GRU memory. A small convolutional encoder reads the 9×7 board (walls, plate, both switches, exit, self, partner). That vector is combined with the private clue, the partner's previous message, the door, escape flags, and the remaining time. Memory resets at the episode boundary, and the PPO update replays contiguous rollouts so the GRU is trained through time. Both agents may send silence or one of four anonymous symbols. The code does not assign those symbols a meaning. The silent team uses the same network and receives silence on every step.
+### Code that was added
 
-Practice changes with the training budget, and the team reward stays the original room reward. For the first 20% the exit starts open and the agents start on distinct reachable tiles, with a one-time bonus of +1 when the first agent exits. For the next 30% the door is locked and the starts are one tile near the plate and one near a switch, assigned at random, with the same bonus. For the last 50%, and for every reported evaluation, the episode is the full locked puzzle and the bonus is absent. No reward depends on who takes a job or which symbol is sent.
+| Piece | What it does |
+|---|---|
+| [role_ppo.py](role_ppo.py) | The experiment. One shared policy. Each agent has its own 64-unit GRU. A convolutional encoder reads seven 9×7 layers: walls, plate, both switches, exit, self, and partner. Those features are combined with the private clue, the partner's previous message, the door, the escape flags, and the time remaining. |
+| [environment.py](environment.py) | The room can carry a message width. The old controllers still use three messages. This experiment uses silence plus four anonymous symbols. Nothing in the code names those symbols. |
+| [demo.py](demo.py) and [vault_view.py](vault_view.py) | Controller `roles`. The panel shows the raw symbol. After an unlock it names who held the plate and who activated the switch. A symbol gloss is labeled as a validation inference. |
+| [Watch Role Coordination.cmd](Watch%20Role%20Coordination.cmd) | Windows launcher for the seed 7 messaging checkpoint. |
+| [test_role_ppo.py](test_role_ppo.py) | Regression tests, listed below. |
 
-The smoke test is 8,192 joint steps for both channel conditions. The recorded run is seeds 7, 8, and 9, each for 1,048,576 joint steps with and without the channel. Rollouts are 16 environments by 128 steps. The other PPO settings match the repository baseline: learning rate 0.0003, Adam epsilon 1e-5, discount 0.99, GAE lambda 0.95, clip 0.2, entropy 0.01, four epochs, four minibatches, and gradient clip 0.5. Training layouts are seeds 0–1023. Validation layouts are seeds 20000–20024. Held-out layouts are seeds 21000–21099, eight episodes each (both clues, both recipients, both start assignments), 800 episodes per seed and condition.
+Either agent can hold the plate while the other activates the correct switch. The clue value, the clue recipient, and which agent stands on which start tile are randomized separately. A and B exist in the viewer and the logs. The policy never receives an agent id, a role label, a destination, a path, or an expert action. Memory resets when the episode ends. The PPO update replays each rollout as a contiguous sequence so the GRU is trained through time. With the two agents' inputs and memories swapped, the shared policy returns the swapped action distributions.
 
-A second test builds paired rooms that keep the walls, exit, starts, clue, and clue recipient fixed, and exchange the plate with the correct switch. Both variants are checked with the scripted reference. The denominator includes pairs where one or both attempts fail.
+The silent team uses the same network size. The room delivers silence to both agents on every step.
 
-The message diagnostic freezes any symbol reading on validation, before held-out episodes. A symbol is described as an intent signal only if that frozen reading predicts the sender's job beyond the clue and positions, and replacing the symbol changes the partner's complementary job. The cutoffs are fixed in `role_ppo.py`: at least 30 labeled held-out rows, a 5 point accuracy margin, at least 20 job-contrast branches, and a complementary-change rate of 0.20. A crash from success to failure counts as disruption, not a role change. If symbols predict the clue and not the job, the report says clue transmission.
+Training practice follows the budget. The team reward is the original room reward throughout.
+
+| Budget | Practice |
+|---|---|
+| First 20% | The exit starts open. The agents start on two distinct reachable floor tiles. The team gets +1 once, when the first agent exits. |
+| Next 30% | The door is locked. One start is near the plate and one is near a switch. Which agent gets which start, and who sees the clue, is random. Neither agent starts on a mechanism. The same one-time exit bonus applies. |
+| Last 50%, and every reported evaluation | The full locked puzzle, ordinary starts, private clue, and the original rewards only. |
+
+PPO settings match the repository baseline: 16 environments, 128-step rollouts, learning rate 0.0003, Adam epsilon 1e-5, discount 0.99, GAE lambda 0.95, clip 0.2, entropy coefficient 0.01, four epochs, four minibatches, gradient clip 0.5. Training layouts are seeds 0–1023, cached in [train_layouts.json](runs/role_coordination/train_layouts.json). Validation layouts are seeds 20000–20024 and were used for the periodic check and for freezing symbol readings. Held-out layouts are seeds 21000–21099. Each layout is run under both clues, both recipients, and both start assignments: 800 episodes per finished seed and condition. The same cases are used for both channel conditions.
+
+The paired-role test keeps walls, exit, starts, clue, and clue recipient fixed, and exchanges the plate with the correct switch. Both variants have to be solvable by the scripted reference. The denominator is every pair, including failures. Fifty pairs were built from layout seeds beginning at 22000.
+
+The message diagnostic freezes a symbol reading on validation before it looks at held-out episodes. A symbol counts as an intent signal only if that reading predicts the sender's job beyond the clue and the positions, and changing the delivered symbol changes the partner's complementary job. The cutoffs live in `role_ppo.py` and were fixed before the held-out test: at least 30 labeled held-out rows, a 5 point accuracy margin, at least 20 job-contrast branches, and a complementary-change rate of at least 0.20. A success that becomes a failure counts as disruption, not a role change.
+
+### Tests that were run
+
+`python -m unittest -v` passed, including the older room, map, and learning tests. The new tests check:
+
+- Either agent can hold the plate while the other activates the correct switch, and the log records those two roles.
+- The clue changes only the recipient's observation.
+- A symbol sent on one step appears in the partner's next observation.
+- With the channel off, both agents receive silence even if they select a symbol. The message head is still width 5.
+- Curriculum starts obey the stage rules. Evaluation always begins in the locked full puzzle, and the exit bonus is absent there.
+- Exchanging the plate and the correct switch leaves the other switch, the walls, the exit, and the starts in place.
+- Resetting one agent's memory leaves the other agent's memory intact.
+- Swapping the two agents' inputs and memories swaps the action distributions.
+- The GRU receives gradient through time, including across a mid-sequence reset.
+- A batched evaluation of a frozen policy matches a solo replay of the same episode.
+- A short PPO update changes the policy weights.
+
+A headless viewer frame of controller `roles` showed the raw symbol line, the private-clue line, and the note that symbol readings are validation inferences.
+
+### Training that finished
+
+Smoke test, both channels, 8,192 joint steps, seed 7. Checkpoints are in [smoke_comm](runs/role_coordination/smoke_comm) and [smoke_silent](runs/role_coordination/smoke_silent). The 8-episode smoke evaluation timed out on every episode. It checks that the pipeline runs.
+
+Seed 7 then trained for 1,048,576 joint steps in each condition. Held-out evaluation is 800 episodes. Sources: [seed7_comm/evaluation.json](runs/role_coordination/seed7_comm/evaluation.json), [seed7_silent/evaluation.json](runs/role_coordination/seed7_silent/evaluation.json), [seed7_comm/paired.json](runs/role_coordination/seed7_comm/paired.json), [seed7_silent/paired.json](runs/role_coordination/seed7_silent/paired.json), [seed7_comm/diagnostic.json](runs/role_coordination/seed7_comm/diagnostic.json), [seed7_silent/diagnostic.json](runs/role_coordination/seed7_silent/diagnostic.json).
+
+| Team | Unlocked | Escaped | Successful steps | Other outcomes | Both pair variants escaped | Plate holder changed across a pair |
+|---|---:|---:|---|---|---:|---:|
+| Seed 7, messages | 14/800 | 1/800 | 91 | 780 timeouts, 19 wrong switches | 0/50 | 1/50 |
+| Seed 7, silence | 17/800 | 3/800 | 84 on average (62, 92, and 98) | 778 timeouts, 19 wrong switches | 0/50 | 0/50 |
+
+The messaging success is layout 21007, clue 0, recipient A, starts swapped. B held the plate and A activated the switch. The silent successes are layouts 21013 (92 steps, plate B, switch A), 21036 (62 steps, plate B, switch A), and 21050 (98 steps, plate A, switch B).
+
+The one plate-holder change is layout 22028, clue 1, recipient B, starts swapped. Both variants unlocked and then timed out at step 100. In one variant B held the plate and A activated the switch. In the exchanged room those jobs were reversed. That is one observed job change. It is not a pair of escapes.
+
+On the messaging team the held-out diagnostic had 28 labeled sender-job rows, under the pre-registered minimum of 30. No frozen symbol reading was scored. Clue-from-symbol accuracy was 0.50125 on 1,600 predictions. Of 800 message interventions, the partner's next moves changed 13 times. Recorded role changes were 0, success disruptions were 0, and branches that contrasted two different job readings were 0. The saved conclusion is that there are too few labeled episodes to test intent. No intent signal is claimed. There is also no evidence here that the symbols carry the clue.
+
+On the silent team the room delivered only silence, so the diagnostic had no alternate symbol to substitute (0 eligible branches). Position predicted the sender's job on 22 of 34 labeled rows. That baseline does not use a message. The silent run is the no-channel comparison, not a test of a learned code.
+
+### What this branch does not yet have
+
+Seed 8 with messages was still in the near-mechanism stage of its 1,048,576-step run when this account was written. [seed8_comm/training.json](runs/role_coordination/seed8_comm/training.json) is a partial learning curve from that run. It has no checkpoint and no evaluation. Seed 8 without messages, and both seed 9 runs, had not been started. `summary.json` and `replay.json` are written at the end of `python role_ppo.py experiment`, so they are absent. The launcher still opens the finished seed 7 messaging checkpoint and plays it live.
 
 ```powershell
+python -m unittest -v
 python role_ppo.py smoke
-python role_ppo.py experiment
-python demo.py --controller roles --checkpoint runs/role_coordination/seed7_comm/checkpoint.pt --replay runs/role_coordination/replay.json
+python role_ppo.py train --seed 7 --steps 1048576 --out runs/role_coordination/seed7_comm
+python role_ppo.py train --seed 7 --steps 1048576 --no-communication --out runs/role_coordination/seed7_silent
+python demo.py --controller roles --checkpoint runs/role_coordination/seed7_comm/checkpoint.pt
 ```
 
-Per-seed escape rates, paired-role counts, and the message conclusion are in [summary.json](runs/role_coordination/summary.json). `Watch Role Coordination.cmd` replays the saved episodes, shows the raw symbols, and names the plate holder and switch activator after an unlock. Any symbol gloss on screen is labeled as a validation inference.
+The two `train` commands repeat the finished seed 7 runs. Their checkpoints and evaluations are already in the folders above.
 
 ## Course deliverables and ownership
 
