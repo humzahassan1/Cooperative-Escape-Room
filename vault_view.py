@@ -111,7 +111,7 @@ class VaultView:
         pygame.draw.line(screen,(58,85,87),(648,308),(1034,308))
         reader='AB'[getattr(env,'clue_holder',0)]
         clue_line = f'Private clue     {reader} sees switch {env.clue+1}'
-        if mode=='Plate signal demo' and not env.has_clue:
+        if mode=='Plate signal demo' and not relay and not getattr(env, 'has_clue', False):
             clue_line = 'Private clue     hidden until B arrives'
         write(env.event if relay else clue_line,650,329)
         write(f'Channel          {"enabled" if env.communication else "disabled"}',650,357)

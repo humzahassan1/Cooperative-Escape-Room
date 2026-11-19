@@ -1,20 +1,30 @@
 """Presentation variant: B can read the clue only after reaching the plate."""
+import copy
 import json
 from pathlib import Path
 import numpy as np
-from environment import EscapeRoom
+from environment import EscapeRoom, random_room
 from options_rl import navigate
 
 
 class PlateRoom(EscapeRoom):
     clue_holder = 1
 
+    def __init__(self, communication=True, config=None):
+        # The fixed room puts A on the plate side, so B starts after a swap.
+        # Random layouts set this per seed, before reset runs.
+        self.reverse_starts = config is None
+        self.layout_seed = None
+        super().__init__(communication, config)
+
     def reset(self, seed=None, clue=None):
         self.has_clue = False
         self.config['plate_holder'] = 1
         obs, info = super().reset(seed, clue)
-        self.pos.reverse()  # B starts on the plate side in this fixed-room demo.
-        return self.observations(), info
+        if self.reverse_starts:
+            self.pos.reverse()
+            obs = self.observations()
+        return obs, info
 
     def interact(self, pairs):
         if self.pos[1] == tuple(self.config['plate']):
@@ -31,6 +41,44 @@ class PlateRoom(EscapeRoom):
 def load_tables():
     path = Path(__file__).parent / 'runs/options/seed7_comm.json'
     return [np.asarray(t) for t in json.loads(path.read_text())['tables']]
+
+
+def _episode_succeeds(config, seed, clue, reverse, tables):
+    room = PlateRoom(config=copy.deepcopy(config))
+    room.reverse_starts = reverse
+    obs, _ = room.reset(seed, clue)
+    walls = room.config.get('walls', ())
+    while not room.done:
+        obs, *_ = room.step(plate_actions(tables, obs, walls))
+    return room.outcome == 'success'
+
+
+def open_plate_room(seed, clue=None, tables=None, attempts=64):
+    """Open a randomized vault the plate demo can escape.
+
+    The drawn clue and the original start order are tried first. A seed that
+    traps one clue uses the other clue. A seed that traps both is skipped.
+    """
+    tables = load_tables() if tables is None else tables
+    requested = None if clue is None else int(clue)
+    for offset in range(attempts):
+        trial = int(seed) + offset
+        config = random_room(trial)
+        if requested is None:
+            drawn = int(np.random.default_rng(trial).integers(0, 2))
+            candidates = (drawn, 1 - drawn)
+        else:
+            candidates = (requested,)
+        for candidate in candidates:
+            for reverse in (False, True):
+                if not _episode_succeeds(config, trial, candidate, reverse, tables):
+                    continue
+                room = PlateRoom(config=copy.deepcopy(config))
+                room.reverse_starts = reverse
+                room.layout_seed = trial
+                obs, _ = room.reset(trial, candidate)
+                return room, obs, trial
+    raise RuntimeError(f'no plate-signal layout within {attempts} seeds of {seed}')
 
 
 def plate_actions(tables, obs, walls):

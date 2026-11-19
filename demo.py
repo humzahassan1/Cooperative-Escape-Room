@@ -15,8 +15,8 @@ def main():
     parser.add_argument('--relay',action='store_true',help='Start directly in the relay chamber')
     parser.add_argument('--screenshot'); parser.add_argument('--frames',type=int,default=0)
     args=parser.parse_args()
-    if (args.campaign or args.relay) and args.controller not in ('scripted','manual'):
-        parser.error('Relay uses seven actions; use manual or scripted playback.')
+    if (args.campaign or args.relay) and args.controller not in ('scripted','manual','plate'):
+        parser.error('Relay uses seven actions; use manual, scripted, or the plate-signal demo.')
     from relay_room import RelayRoom
     round_seed = args.seed if args.seed is not None else secrets.randbits(32)
     policies=None; communication=True
@@ -54,7 +54,7 @@ def main():
         path=Path(args.checkpoint or 'runs/free_roles/seed7.json')
         free_policy=Policy(json.loads(path.read_text())['genome'])
     if args.controller=='plate':
-        from plate_signal import PlateRoom, plate_actions, load_tables
+        from plate_signal import open_plate_room, plate_actions, load_tables
         plate_tables = load_tables()
     if args.controller=='options':
         import json
@@ -71,13 +71,13 @@ def main():
         torch.manual_seed(round_seed)
         policies,data=load(args.checkpoint); communication=data['config']['communication']
     def start_round(seed):
-        if args.controller=='plate':
-            room = PlateRoom()
-            return room, room.reset(seed)[0]
-        nonlocal role_hidden, role_generator
+        nonlocal role_hidden, role_generator, round_seed
         if args.relay:
             room=RelayRoom(seed)
             return room,room.observations()
+        if args.controller=='plate':
+            room, obs, round_seed = open_plate_room(seed, tables=plate_tables)
+            return room, obs
         if args.controller=='roles':
             import torch
             from role_ppo import HIDDEN, case_generator, reset_for_evaluation
