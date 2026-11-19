@@ -1,0 +1,106 @@
+{
+  "communication": true,
+  "decision_rule": {
+    "min_interpretation_count": 5,
+    "accuracy_margin": 0.05,
+    "min_labeled": 30,
+    "min_branches": 20,
+    "complement_rate": 0.2,
+    "clue_accuracy": 0.7
+  },
+  "interpretation": {
+    "labeled_as": "validation inference, not an assigned meaning",
+    "min_count": 5,
+    "by_clue": {
+      "0": {
+        "0": {
+          "job": null,
+          "n": 0,
+          "plate": 0,
+          "switch": 0
+        },
+        "1": {
+          "job": null,
+          "n": 2,
+          "plate": 1,
+          "switch": 1
+        },
+        "2": {
+          "job": null,
+          "n": 0,
+          "plate": 0,
+          "switch": 0
+        },
+        "3": {
+          "job": null,
+          "n": 2,
+          "plate": 1,
+          "switch": 1
+        },
+        "4": {
+          "job": null,
+          "n": 2,
+          "plate": 1,
+          "switch": 1
+        }
+      },
+      "1": {
+        "0": {
+          "job": null,
+          "n": 4,
+          "plate": 1,
+          "switch": 3
+        },
+        "1": {
+          "job": null,
+          "n": 3,
+          "plate": 1,
+          "switch": 2
+        },
+        "2": {
+          "job": null,
+          "n": 0,
+          "plate": 0,
+          "switch": 0
+        },
+        "3": {
+          "job": null,
+          "n": 1,
+          "plate": 1,
+          "switch": 0
+        },
+        "4": {
+          "job": null,
+          "n": 2,
+          "plate": 2,
+          "switch": 0
+        }
+      }
+    }
+  },
+  "stats": {
+    "validation_messages": 31796,
+    "heldout_messages": 126262,
+    "heldout_labeled": 28,
+    "position_job_accuracy": 0.5357142857142857,
+    "symbol_job_accuracy": null,
+    "clue_accuracy": 0.50125,
+    "clue_predictions": 1600,
+    "eligible": 800,
+    "completed": 800,
+    "receiver_move_changes": 13,
+    "role_changes": 0,
+    "disruptions": 0,
+    "complementary": 0,
+    "different_job_branches": 0,
+    "different_job_role_changes": 0,
+    "different_job_complementary": 0
+  },
+  "conclusion": {
+    "kind": "insufficient",
+    "text": "Too few held-out episodes assigned a plate holder and a switch activator to test whether messages predict the sender job. No intent signal is claimed.",
+    "complement_rate": null,
+    "predicts_job": false,
+    "changes_partner": false
+  }
+}

@@ -1,0 +1,1 @@
+python role_ppo.py train --seed 7 --steps 8192 --out /workspace/runs/role_coordination/smoke_comm

@@ -29,11 +29,27 @@ Randomized layouts are filtered for solvability by replaying the scripted refere
 
 **Generalization.** The 179/200 result belongs to the version with built-in navigation. Full-map PPO uses a different policy, action set, reward setup, and evaluation design. Comparing those percentages directly cannot isolate the effect of giving agents a map. A message intervention on a team with zero escapes also provides little information about what its messages mean.
 
-## Next experiment to run
+## Role coordination
 
-The implementation target is a team that sees the room, takes individual steps, chooses its own roles, and escapes on new layouts. Keep the current full-map checkpoint as the baseline. A suggested next run is to change **one training factor**: compare the current starts with staged practice that begins near the exit, then near the plate and switches, then in the full room. Use the same total budget, training layouts, rewards, architecture and matched seeds for both conditions. Save new runs in separate directories and record the exact configuration.
+The full-map pilot is the baseline this run starts from: shared weights, interchangeable mechanics, primitive actions, and **0/100** escapes. The **179/200** result is a different controller that chooses destinations and uses a supplied pathfinder. It is not the comparison for this run.
 
-Log intermediate outcomes to identify where training breaks down: plate occupied during a switch attempt, correct unlock, first agent out, both out. Evaluate frozen policies on balanced clue and recipient combinations. Reserve fresh layout seeds for final evaluation once the design is chosen. If escapes become reliable, compare normal messages, swapped messages, and a separately trained silent baseline. Repeat over multiple training seeds. This is proposed work; the repository currently contains one full-map training seed.
+`role_ppo.py` keeps one shared policy. Each agent has its own 64-unit GRU memory. A small convolutional encoder reads the 9×7 board (walls, plate, both switches, exit, self, partner). That vector is combined with the private clue, the partner's previous message, the door, escape flags, and the remaining time. Memory resets at the episode boundary, and the PPO update replays contiguous rollouts so the GRU is trained through time. Both agents may send silence or one of four anonymous symbols. The code does not assign those symbols a meaning. The silent team uses the same network and receives silence on every step.
+
+Practice changes with the training budget, and the team reward stays the original room reward. For the first 20% the exit starts open and the agents start on distinct reachable tiles, with a one-time bonus of +1 when the first agent exits. For the next 30% the door is locked and the starts are one tile near the plate and one near a switch, assigned at random, with the same bonus. For the last 50%, and for every reported evaluation, the episode is the full locked puzzle and the bonus is absent. No reward depends on who takes a job or which symbol is sent.
+
+The smoke test is 8,192 joint steps for both channel conditions. The recorded run is seeds 7, 8, and 9, each for 1,048,576 joint steps with and without the channel. Rollouts are 16 environments by 128 steps. The other PPO settings match the repository baseline: learning rate 0.0003, Adam epsilon 1e-5, discount 0.99, GAE lambda 0.95, clip 0.2, entropy 0.01, four epochs, four minibatches, and gradient clip 0.5. Training layouts are seeds 0–1023. Validation layouts are seeds 20000–20024. Held-out layouts are seeds 21000–21099, eight episodes each (both clues, both recipients, both start assignments), 800 episodes per seed and condition.
+
+A second test builds paired rooms that keep the walls, exit, starts, clue, and clue recipient fixed, and exchange the plate with the correct switch. Both variants are checked with the scripted reference. The denominator includes pairs where one or both attempts fail.
+
+The message diagnostic freezes any symbol reading on validation, before held-out episodes. A symbol is described as an intent signal only if that frozen reading predicts the sender's job beyond the clue and positions, and replacing the symbol changes the partner's complementary job. The cutoffs are fixed in `role_ppo.py`: at least 30 labeled held-out rows, a 5 point accuracy margin, at least 20 job-contrast branches, and a complementary-change rate of 0.20. A crash from success to failure counts as disruption, not a role change. If symbols predict the clue and not the job, the report says clue transmission.
+
+```powershell
+python role_ppo.py smoke
+python role_ppo.py experiment
+python demo.py --controller roles --checkpoint runs/role_coordination/seed7_comm/checkpoint.pt --replay runs/role_coordination/replay.json
+```
+
+Per-seed escape rates, paired-role counts, and the message conclusion are in [summary.json](runs/role_coordination/summary.json). `Watch Role Coordination.cmd` replays the saved episodes, shows the raw symbols, and names the plate holder and switch activator after an unlock. Any symbol gloss on screen is labeled as a validation inference.
 
 ## Course deliverables and ownership
 

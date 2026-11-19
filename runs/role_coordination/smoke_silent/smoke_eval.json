@@ -1,0 +1,15 @@
+{
+  "train_seed": 7,
+  "communication": false,
+  "train_steps": 8192,
+  "episodes": 8,
+  "unlocked": 0,
+  "escaped": 0,
+  "unlock_rate": 0.0,
+  "escape_rate": 0.0,
+  "mean_success_steps": null,
+  "outcomes": {
+    "timeout": 8
+  },
+  "roles": []
+}

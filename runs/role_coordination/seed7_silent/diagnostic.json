@@ -1,0 +1,106 @@
+{
+  "communication": false,
+  "decision_rule": {
+    "min_interpretation_count": 5,
+    "accuracy_margin": 0.05,
+    "min_labeled": 30,
+    "min_branches": 20,
+    "complement_rate": 0.2,
+    "clue_accuracy": 0.7
+  },
+  "interpretation": {
+    "labeled_as": "validation inference, not an assigned meaning",
+    "min_count": 5,
+    "by_clue": {
+      "0": {
+        "0": {
+          "job": null,
+          "n": 4,
+          "plate": 2,
+          "switch": 2
+        },
+        "1": {
+          "job": null,
+          "n": 0,
+          "plate": 0,
+          "switch": 0
+        },
+        "2": {
+          "job": null,
+          "n": 0,
+          "plate": 0,
+          "switch": 0
+        },
+        "3": {
+          "job": null,
+          "n": 0,
+          "plate": 0,
+          "switch": 0
+        },
+        "4": {
+          "job": null,
+          "n": 0,
+          "plate": 0,
+          "switch": 0
+        }
+      },
+      "1": {
+        "0": {
+          "job": null,
+          "n": 2,
+          "plate": 1,
+          "switch": 1
+        },
+        "1": {
+          "job": null,
+          "n": 0,
+          "plate": 0,
+          "switch": 0
+        },
+        "2": {
+          "job": null,
+          "n": 0,
+          "plate": 0,
+          "switch": 0
+        },
+        "3": {
+          "job": null,
+          "n": 0,
+          "plate": 0,
+          "switch": 0
+        },
+        "4": {
+          "job": null,
+          "n": 0,
+          "plate": 0,
+          "switch": 0
+        }
+      }
+    }
+  },
+  "stats": {
+    "validation_messages": 31720,
+    "heldout_messages": 125732,
+    "heldout_labeled": 34,
+    "position_job_accuracy": 0.6470588235294118,
+    "symbol_job_accuracy": null,
+    "clue_accuracy": null,
+    "clue_predictions": 0,
+    "eligible": 0,
+    "completed": 0,
+    "receiver_move_changes": 0,
+    "role_changes": 0,
+    "disruptions": 0,
+    "complementary": 0,
+    "different_job_branches": 0,
+    "different_job_role_changes": 0,
+    "different_job_complementary": 0
+  },
+  "conclusion": {
+    "kind": "silent",
+    "predicts_job": false,
+    "changes_partner": false,
+    "complement_rate": null,
+    "text": "This team was trained with silence delivered to both agents. A one-step symbol injection is outside the training distribution and is not evidence of a learned message convention."
+  }
+}

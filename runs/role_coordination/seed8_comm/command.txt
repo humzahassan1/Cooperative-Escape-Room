@@ -1,0 +1,1 @@
+python role_ppo.py train --seed 8 --steps 1048576 --out /workspace/runs/role_coordination/seed8_comm

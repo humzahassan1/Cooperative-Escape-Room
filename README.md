@@ -2,7 +2,7 @@
 
 Can two agents learn to solve a puzzle together, and does exchanging a private clue help? This Python project includes the playable room, six automatic controllers, trained checkpoints, and the experiments behind them. **Our clearest communication result:** when agents learned messages and destinations and had a built-in navigator, each of three trained teams escaped in 179/200 trials. Swapping the messages reduced every team to 0/200. Learning individual moves on unfamiliar maps remains open.
 
-**Joining the project?** Start with the [partner handoff](HANDOFF.md) for the decisions, evidence, limitations, and next experiment.
+**Joining the project?** Start with the [partner handoff](HANDOFF.md) for the decisions, evidence, limitations, and the role-coordination experiment.
 
 ![The Sunken Vault game window](preview.png)
 
@@ -28,6 +28,7 @@ The agents start moving automatically. The launchers use the project virtual env
 | Watch Learned Cooperation.cmd | Learned signals and destination choices with built-in pathfinding. Best demo of message dependence. |
 | Watch Learned Moves.cmd | A shared evolved policy chooses each move. Either agent can operate either mechanism on the familiar map. |
 | Watch Full Map Agents.cmd | The latest PPO pilot sees the full public map and attempts unfamiliar rooms. Expect unsuccessful attempts. |
+| Watch Role Coordination.cmd | Shared GRU policy, no assigned jobs. Raw symbols stay unlabeled. After an unlock, the panel names who held the plate and who activated the switch. |
 | Watch PPO Agents.cmd | Original independent PPO agents on the fixed room. |
 | Watch Staged PPO.cmd | Independent PPO after staged practice and extra training rewards. |
 | Play Manual.cmd | Control both agents yourself to inspect the rules. |
@@ -47,6 +48,7 @@ Run commands from the repository root with the project environment active. On Wi
 | Learned goals and messages | [Training, evaluation, and message swaps](LEARNED.md) |
 | Learned individual moves | [Training, role swaps, and transfer tests](FREE_ROLES.md) |
 | Full-map PPO | Run `python map_ppo.py` to train and evaluate. [Recorded evaluation](runs/map_ppo/evaluation.json) |
+| Role coordination | [Commands and per-seed results](runs/role_coordination/summary.json). Train with `python role_ppo.py experiment`. Replay with `python demo.py --controller roles --checkpoint runs/role_coordination/seed7_comm/checkpoint.pt --replay runs/role_coordination/replay.json`. |
 
 ```powershell
 python -m unittest -v

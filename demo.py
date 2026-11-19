@@ -8,12 +8,37 @@ import secrets
 
 def main():
     parser=argparse.ArgumentParser()
-    parser.add_argument('--controller',choices=['manual','scripted','ppo','options','free','map'],default='scripted')
+    parser.add_argument('--controller',choices=['manual','scripted','ppo','options','free','map','roles'],default='scripted')
     parser.add_argument('--checkpoint'); parser.add_argument('--seed',type=int)
+    parser.add_argument('--replay')
     parser.add_argument('--screenshot'); parser.add_argument('--frames',type=int,default=0)
     args=parser.parse_args()
     round_seed = args.seed if args.seed is not None else secrets.randbits(32)
     policies=None; communication=True
+    role_queue = []
+    role_hidden = None
+    role_generator = None
+    role_inference = None
+    if args.controller=='roles':
+        import json
+        from pathlib import Path
+        import torch
+        from role_ppo import load_role, case_generator, reset_for_evaluation
+        from environment import random_room as role_room
+        checkpoint = args.checkpoint or 'runs/role_coordination/seed7_comm/checkpoint.pt'
+        if not Path(checkpoint).exists():
+            parser.error(f'role checkpoint not found: {checkpoint}')
+        role_model, role_payload = load_role(checkpoint)
+        communication = role_payload['communication']
+        role_hidden = torch.zeros(2, role_model.gru.hidden_size)
+        role_generator = torch.Generator().manual_seed(round_seed)
+        interpretation_path = Path(checkpoint).with_name('interpretation.json')
+        if not interpretation_path.exists():
+            interpretation_path = Path('runs/role_coordination/interpretation.json')
+        role_inference = json.loads(interpretation_path.read_text()) if interpretation_path.exists() else None
+        if args.replay:
+            replay = json.loads(Path(args.replay).read_text())
+            role_queue = list(replay.get('episodes', []))
     if args.controller=='map':
         from map_ppo import load_map, room_for, moves
         map_policy = load_map()
@@ -38,6 +63,22 @@ def main():
         torch.manual_seed(round_seed)
         policies,data=load(args.checkpoint); communication=data['config']['communication']
     def start_round(seed):
+        nonlocal role_hidden, role_generator
+        if args.controller=='roles':
+            import torch
+            from role_ppo import HIDDEN, case_generator, reset_for_evaluation
+            if role_queue:
+                episode = role_queue.pop(0)
+                room = reset_for_evaluation(episode['config'], episode['clue'], episode['holder'], episode['swap'], communication, episode['layout_seed'])
+                room.replay_actions = episode.get('actions')
+            else:
+                room = reset_for_evaluation(role_room(seed), None, None, None, communication, seed)
+                room.replay_actions = None
+            room.inference = role_inference
+            room.replay_index = 0
+            role_hidden = torch.zeros(2, HIDDEN)
+            role_generator = case_generator(seed, getattr(room, 'clue', 0), getattr(room, 'clue_holder', 0), 0)
+            return room, room.observations()
         if args.controller=='map':
             room = room_for(seed)
             return room, room.reset(seed)[0]
@@ -52,11 +93,21 @@ def main():
     view = VaultView()
     clock=pygame.time.Clock(); selected=0; pending=[0,0]; paused=False; speed=4; accumulator=0; running=True; frames=0
     def advance(actions=None):
-        nonlocal obs
+        nonlocal obs, role_hidden
         if env.done:return
         if actions is None:
             walls=env.config.get('walls', ())
-            if args.controller=='map':
+            if args.controller=='roles':
+                recorded = getattr(env, 'replay_actions', None)
+                if recorded is not None and env.replay_index < len(recorded):
+                    actions = {key: tuple(value) for key, value in recorded[env.replay_index].items()}
+                    env.replay_index += 1
+                else:
+                    from role_ppo import policy_forward, sample_actions
+                    move_logits, message_logits, _, updated = policy_forward(role_model, [obs], role_hidden[None])
+                    actions = sample_actions(move_logits[0], message_logits[0], role_generator)
+                    role_hidden = updated[0].detach()
+            elif args.controller=='map':
                 actions=moves(map_policy,obs)
             elif args.controller=='free':
                 actions=free_policy.act(obs)
@@ -96,7 +147,7 @@ def main():
                 env,obs=start_round(round_seed); accumulator=0
             elif not env.done and accumulator>=1/speed:
                 advance(); accumulator=0
-        mode = {'manual':'Manual','scripted':'Scripted','ppo':'Trained PPO','options':'Learned cooperation','free':'Learned moves','map':'Full-map PPO'}[args.controller]
+        mode = {'manual':'Manual','scripted':'Scripted','ppo':'Trained PPO','options':'Learned cooperation','free':'Learned moves','map':'Full-map PPO','roles':'Role coordination' if communication else 'Role coordination silent'}[args.controller]
         view.draw(screen, env, mode, round_seed, speed, paused, selected)
         pygame.display.flip(); frames+=1
         if args.screenshot and frames==1: pygame.image.save(screen,args.screenshot)

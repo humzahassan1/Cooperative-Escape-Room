@@ -8,9 +8,10 @@ MOVES = ((0,-1),(0,1),(-1,0),(1,0),(0,0),(0,0))
 OBS_VERSION = 1
 
 class EscapeRoom:
-    def __init__(self, communication=True, config=None):
+    def __init__(self, communication=True, config=None, message_count=3):
         self.config = config or json.loads(Path(__file__).with_name('room.json').read_text())
         self.communication = communication
+        self.message_count = int(message_count)
         self.reset(0)
 
     def reset(self, seed=None, clue=None):
@@ -38,7 +39,7 @@ class EscapeRoom:
         result = {}
         for i,k in enumerate(IDS):
             clue = [float(self.clue==j) if i==getattr(self,'clue_holder',0) else 0. for j in range(2)]
-            message = [float(self.messages[1-i]==j) for j in range(3)]
+            message = [float(self.messages[1-i]==j) for j in range(self.message_count)]
             result[k] = np.array(public+clue+message,dtype=np.float32)
         return result
 
@@ -46,8 +47,8 @@ class EscapeRoom:
         if self.done:
             raise RuntimeError('reset required after episode end')
         pairs = [tuple(map(int,actions[k])) for k in IDS]
-        if any(a not in range(6) or m not in range(3) for a,m in pairs):
-            raise ValueError('actions must be (movement 0..5, message 0..2)')
+        if any(a not in range(6) or m not in range(self.message_count) for a,m in pairs):
+            raise ValueError(f'actions must be (movement 0..5, message 0..{self.message_count - 1})')
         c = self.config
         old = self.pos.copy()
         proposed = old.copy()

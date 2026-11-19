@@ -1,0 +1,9 @@
+python role_ppo.py smoke
+python role_ppo.py train --seed 7 --steps 1048576 --out runs/role_coordination/seed7_comm
+python role_ppo.py train --seed 7 --steps 1048576 --no-communication --out runs/role_coordination/seed7_silent
+python role_ppo.py train --seed 8 --steps 1048576 --out runs/role_coordination/seed8_comm
+python role_ppo.py train --seed 8 --steps 1048576 --no-communication --out runs/role_coordination/seed8_silent
+python role_ppo.py train --seed 9 --steps 1048576 --out runs/role_coordination/seed9_comm
+python role_ppo.py train --seed 9 --steps 1048576 --no-communication --out runs/role_coordination/seed9_silent
+python role_ppo.py report
+python demo.py --controller roles --checkpoint runs/role_coordination/seed7_comm/checkpoint.pt --replay runs/role_coordination/replay.json

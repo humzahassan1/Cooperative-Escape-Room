@@ -1,0 +1,44 @@
+{
+  "algorithm": "ppo",
+  "communication": true,
+  "total_steps": 8192,
+  "seed": 7,
+  "num_envs": 16,
+  "rollout": 128,
+  "epochs": 4,
+  "minibatches": 4,
+  "learning_rate": 0.0003,
+  "adam_eps": 1e-05,
+  "gamma": 0.99,
+  "gae_lambda": 0.95,
+  "clip": 0.2,
+  "entropy": 0.01,
+  "value_coef": 0.5,
+  "gradient_clip": 0.5,
+  "hidden_size": 64,
+  "message_count": 5,
+  "observation_size": 452,
+  "curriculum": {
+    "exit": 0.2,
+    "near": 0.3,
+    "full": 0.5
+  },
+  "first_exit_bonus": 1.0,
+  "bonus_stages": [
+    "exit",
+    "near"
+  ],
+  "train_layout_seeds": [
+    0,
+    1023
+  ],
+  "validation_layout_seeds": [
+    20000,
+    20024
+  ],
+  "test_layout_seeds": [
+    21000,
+    21099
+  ],
+  "architecture": "shared conv encoder, 64-unit GRU, separate memory, primitive moves, 5 messages"
+}

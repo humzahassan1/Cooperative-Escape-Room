@@ -1,0 +1,70 @@
+{
+  "labeled_as": "validation inference, not an assigned meaning",
+  "min_count": 5,
+  "by_clue": {
+    "0": {
+      "0": {
+        "job": null,
+        "n": 0,
+        "plate": 0,
+        "switch": 0
+      },
+      "1": {
+        "job": null,
+        "n": 2,
+        "plate": 1,
+        "switch": 1
+      },
+      "2": {
+        "job": null,
+        "n": 0,
+        "plate": 0,
+        "switch": 0
+      },
+      "3": {
+        "job": null,
+        "n": 2,
+        "plate": 1,
+        "switch": 1
+      },
+      "4": {
+        "job": null,
+        "n": 2,
+        "plate": 1,
+        "switch": 1
+      }
+    },
+    "1": {
+      "0": {
+        "job": null,
+        "n": 4,
+        "plate": 1,
+        "switch": 3
+      },
+      "1": {
+        "job": null,
+        "n": 3,
+        "plate": 1,
+        "switch": 2
+      },
+      "2": {
+        "job": null,
+        "n": 0,
+        "plate": 0,
+        "switch": 0
+      },
+      "3": {
+        "job": null,
+        "n": 1,
+        "plate": 1,
+        "switch": 0
+      },
+      "4": {
+        "job": null,
+        "n": 2,
+        "plate": 2,
+        "switch": 0
+      }
+    }
+  }
+}

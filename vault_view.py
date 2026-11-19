@@ -81,7 +81,15 @@ class VaultView:
             top=165+68*i
             sprite(kind,679,top+24)
             write(caption,722,top,self.colors[i],self.medium)
-            write('ESCAPED' if env.escaped[i] else f'Transmitted symbol   {env.messages[i]}',723,top+31,muted)
+            if str(mode).startswith('Role coordination'):
+                symbol = env.messages[i]
+                sent = 'silence' if symbol == 0 else f'symbol {symbol}'
+                write('ESCAPED' if env.escaped[i] else f'Transmitted   {sent}',723,top+28,muted)
+                note = self.inference(env, symbol)
+                if note and not env.escaped[i]:
+                    write(note,723,top+46,brass)
+            else:
+                write('ESCAPED' if env.escaped[i] else f'Transmitted symbol   {env.messages[i]}',723,top+31,muted)
         pygame.draw.line(screen,(58,85,87),(648,308),(1034,308))
         reader='AB'[getattr(env,'clue_holder',0)]
         write(f'Private clue     {reader} sees switch {env.clue+1}',650,329)
@@ -92,6 +100,8 @@ class VaultView:
         pygame.draw.rect(screen,(39,63,68),(650,478,382,5))
         pygame.draw.rect(screen,brass,(650,478,round(382*env.steps/cfg['max_steps']),5))
         status='PAUSED' if paused else env.outcome.upper()
+        if str(mode).startswith('Role coordination') and getattr(env, 'plate_holder', None) is not None:
+            status += f"   plate {'AB'[env.plate_holder]}   switch {'AB'[env.switch_activator]}"
         write(status,650,504,self.colors[0] if env.outcome!='wrong switch' else self.colors[1],self.medium)
         if env.done and not paused:
             write('R for next room' if mode=='Manual' else 'Next dive starts automatically',650,538,muted)
@@ -100,3 +110,15 @@ class VaultView:
         write('R  Next dive     P  Pause     N  Step     + / -  Speed     Esc  Quit',26,611,muted)
         if mode=='Manual':
             write('Tab  Select     Arrows  Move     E  Use     Space  Wait     0/1/2  Signal',26,634,brass)
+        elif str(mode).startswith('Role coordination'):
+            write('Symbol readings are validation inferences, not assigned meanings.',26,634,brass)
+
+    def inference(self, env, symbol):
+        table = getattr(env, 'inference', None)
+        if not table:
+            return None
+        clue = table.get('by_clue', {}).get(str(int(env.clue)), {})
+        row = clue.get(str(int(symbol)))
+        if not row or not row.get('job') or row.get('n', 0) < table.get('min_count', 1):
+            return None
+        return f"inferred {row['job']}  n={row['n']}"

@@ -1,0 +1,1111 @@
+{
+  "pairs": 50,
+  "denominator": 50,
+  "both_solved": 0,
+  "one_solved": 0,
+  "neither_solved": 50,
+  "job_changed": 0,
+  "job_changed_and_both_escaped": 0,
+  "episodes": [
+    {
+      "layout_seed": 22000,
+      "clue": 0,
+      "holder": 1,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22001,
+      "clue": 0,
+      "holder": 0,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": true,
+        "plate_holder": 1,
+        "switch_activator": 0
+      }
+    },
+    {
+      "layout_seed": 22004,
+      "clue": 1,
+      "holder": 1,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22006,
+      "clue": 0,
+      "holder": 0,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22007,
+      "clue": 0,
+      "holder": 0,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22008,
+      "clue": 1,
+      "holder": 0,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22009,
+      "clue": 0,
+      "holder": 1,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22010,
+      "clue": 1,
+      "holder": 1,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22012,
+      "clue": 1,
+      "holder": 0,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": true,
+        "plate_holder": 0,
+        "switch_activator": 1
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22013,
+      "clue": 0,
+      "holder": 0,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22014,
+      "clue": 1,
+      "holder": 0,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22015,
+      "clue": 1,
+      "holder": 0,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22016,
+      "clue": 0,
+      "holder": 0,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": true,
+        "plate_holder": 0,
+        "switch_activator": 1
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22017,
+      "clue": 1,
+      "holder": 0,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22018,
+      "clue": 0,
+      "holder": 0,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22019,
+      "clue": 0,
+      "holder": 1,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22022,
+      "clue": 0,
+      "holder": 0,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22023,
+      "clue": 0,
+      "holder": 1,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22025,
+      "clue": 0,
+      "holder": 0,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "wrong switch",
+        "steps": 78,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22027,
+      "clue": 1,
+      "holder": 1,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22028,
+      "clue": 1,
+      "holder": 1,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22031,
+      "clue": 1,
+      "holder": 1,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22033,
+      "clue": 1,
+      "holder": 1,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22034,
+      "clue": 1,
+      "holder": 0,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": true,
+        "plate_holder": 1,
+        "switch_activator": 0
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22035,
+      "clue": 0,
+      "holder": 1,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22036,
+      "clue": 1,
+      "holder": 0,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22037,
+      "clue": 1,
+      "holder": 0,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22038,
+      "clue": 0,
+      "holder": 0,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22040,
+      "clue": 1,
+      "holder": 1,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "wrong switch",
+        "steps": 90,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22041,
+      "clue": 0,
+      "holder": 0,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22042,
+      "clue": 1,
+      "holder": 1,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22043,
+      "clue": 1,
+      "holder": 1,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22045,
+      "clue": 0,
+      "holder": 1,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22047,
+      "clue": 0,
+      "holder": 0,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22048,
+      "clue": 1,
+      "holder": 0,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22050,
+      "clue": 1,
+      "holder": 1,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22051,
+      "clue": 1,
+      "holder": 0,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22052,
+      "clue": 1,
+      "holder": 1,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22053,
+      "clue": 0,
+      "holder": 0,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22054,
+      "clue": 0,
+      "holder": 0,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22055,
+      "clue": 0,
+      "holder": 1,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22056,
+      "clue": 0,
+      "holder": 0,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22057,
+      "clue": 0,
+      "holder": 0,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22058,
+      "clue": 1,
+      "holder": 1,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22059,
+      "clue": 1,
+      "holder": 0,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22060,
+      "clue": 1,
+      "holder": 0,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22061,
+      "clue": 0,
+      "holder": 1,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22062,
+      "clue": 1,
+      "holder": 1,
+      "swap": false,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22064,
+      "clue": 1,
+      "holder": 0,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    },
+    {
+      "layout_seed": 22065,
+      "clue": 0,
+      "holder": 0,
+      "swap": true,
+      "both_escaped": false,
+      "job_changed": false,
+      "left": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      },
+      "right": {
+        "outcome": "timeout",
+        "steps": 100,
+        "unlocked": false,
+        "plate_holder": null,
+        "switch_activator": null
+      }
+    }
+  ]
+}
