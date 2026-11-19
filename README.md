@@ -4,6 +4,8 @@ Can two agents learn to solve a puzzle together, and does exchanging a private c
 
 **Joining the project?** Start with the [partner handoff](HANDOFF.md) for the decisions, evidence, limitations, and next experiment.
 
+![The Sunken Vault game window](preview.png)
+
 ## Run your first demo
 
 On Windows, install Python 3.12, open PowerShell, and run:
